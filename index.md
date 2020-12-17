@@ -184,6 +184,16 @@ let options = {
   })
 ```
 
+## renderFinish
+
+> 绑定加载完成事件
+
+```javascript
+  viewRender.addEventListener('renderFinish', function (event) {
+    console.log(event)
+  });
+```
+
 # API接口
 
 > API接口在interfaceApi原型链上
@@ -260,4 +270,181 @@ let options = {
     offset: addDwgMark.offset,
   })
 
+```
+
+## bounceMarkPoint
+
+> 跳动标注点
+
+```javascript
+  viewRender.interfaceApi.bounceMarkPoint(id)
+```
+
+## setMarkVisible
+
+> 显隐所有标记点
+
+```javascript
+  /**
+   * @param {String} domId 渲染区域的元素id
+   * @param {Boolean} visible 显隐
+   */
+  viewRender.interfaceApi.setMarkVisible(domId, visible)
+```
+
+## setModelViewInfo
+
+> 设置模型viewInfo视口（高亮构件，视角改变，剖切状态，楼层显隐等状态）
+
+```javascript
+  /**
+   * 设置模型viewInfo视口接口（以下信息都能在selectedEntity中找到）
+   * @param {String} floorID 楼层id
+   * @param {String} handle 构件handle
+   * @param {String} floorName 楼层name(兼容老数据)可传空
+   * @param {String} flatBuffer viewInfo数据
+   */
+  viewRender.interfaceApi.setModelViewInfo(floorID, handle, floorName, flatBuffer)
+```
+
+## setSelectGeometry
+
+> 单独设置高亮构件
+
+```javascript
+  /**
+   * 设置模型构件高亮（以下信息都能在selectedEntity中找到）
+   * @param {String} floorID 楼层id
+   * @param {String} handle 构件handle
+   * @param {String} floorName 楼层name(兼容老数据)可传空
+   */
+  viewRender.interfaceApi.setSelectGeometry(floorID, handle, floorName)
+```
+
+## clearAllHighlightEntity
+
+> 清空高亮构件
+
+```javascript
+  viewRender.interfaceApi.clearAllHighlightEntity()
+```
+
+## setCameraModelView
+
+> 单独设置照相机位置
+
+```javascript
+  /**
+   * 设置照相机位置（以下信息都能在selectedEntity中找到）
+   * @param {Vector3} up 照相机up方向
+   * @param {Vector3} target 照相机target方向
+   * @param {Vector3} position 照相机位置信息
+   */
+  viewRender.interfaceApi.setCameraModelView(up, target, position)
+```
+
+## setCameraCADView
+
+> 设置图纸viewInfo视口（视角改变）
+
+```javascript
+  /**
+   * 设置图纸viewInfo视口接口（以下信息都能在addDwgMark中找到）
+   * @param {String} port 视口信息
+   * @param {String} markPoint 图纸标记点位置
+   */
+  viewRender.interfaceApi.setCameraCADView(port, markPoint)
+
+  // port 如何生成
+  let port = `${addDwgMark.cameraPosition.x},${addDwgMark.cameraPosition.y},${addDwgMark.outWidth.width},${addDwgMark.outWidth.height}`
+
+  // markPoint 如何生成
+  let markPoint = JSON.stringify({
+    position: `${addDwgMark.DWGMark.x},${addDwgMark.DWGMark.y}`,
+    offset: addDwgMark.offset,
+  })
+```
+
+## getViewInfo
+
+> 模型 在没有点选构件的情况下获取视口相关信息(图纸此方法无效，获取的数据不完整)
+
+```javascript
+  let viewInfo = viewRender.interfaceApi.getViewInfo()
+
+  // return 返回的数据结构内容如下
+  {
+    cameraPosition: '照相机位置',
+    cameraTarget: '照相机target方向',
+    cameraUp: '照相机up方向',
+    flatBuffer: '记录视口信息，经过了编码，包含照相机位置，剖切信息，楼层构件显隐信息等'
+  }
+```
+
+## canvasToImageBlod
+
+> 获取当前canvas的图片的Blob数据
+
+```javascript
+  viewRender.interfaceApi.canvasToImageBlod()
+```
+
+## canvasToImage
+
+> 获取当前canvas的图片
+
+```javascript
+  viewRender.interfaceApi.canvasToImage()
+```
+
+## openModelRotate
+
+> 开启模型自动旋转
+
+```javascript
+  viewRender.interfaceApi.openModelRotate()
+```
+
+## closeModelRotate
+
+> 关闭模型自动旋转
+
+```javascript
+  viewRender.interfaceApi.closeModelRotate()
+```
+
+## setSingleClick
+
+> 是否开启单击选中构件
+
+```javascript
+  viewRender.interfaceApi.setSingleClick(visible)
+```
+
+## closeBarAllOperation
+
+> 关闭操作栏所有已开启的功能
+
+```javascript
+  viewRender.interfaceApi.closeBarAllOperation()
+```
+
+## setVisibleBar
+
+> 显隐底下操作栏
+
+```javascript
+  /**
+   * @param {String} domId 渲染区域的元素id
+   * @param {Boolean} visible 显隐
+   */
+  viewRender.interfaceApi.setVisibleBar(domId, visible)
+```
+
+## dispose
+
+> 清空模型图纸，释放内存
+
+```javascript
+  viewRender.interfaceApi.dispose()
 ```
