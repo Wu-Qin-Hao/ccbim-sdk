@@ -421,6 +421,14 @@ let options = {
   viewRender.interfaceApi.setSingleClick(visible)
 ```
 
+## 是否开启phone端dwg图纸打标记点
+
+> 是否开启单击选中构件
+
+```javascript
+  viewRender.interfaceApi.setIsPhoneDwgAddMark(visible)
+```
+
 ## closeBarAllOperation
 
 > 关闭操作栏所有已开启的功能
