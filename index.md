@@ -237,6 +237,18 @@ let options = {
 
 > 设置标注点
 
+* 添加标记点的业务流程如下
+* 1. 模型里绑定选中构件事件监听 selectedEntity（图纸里绑定选中位置事件监听 selectedEntity）
+* 2. 获取返回的信息，做业务端流程操作，按照业务存储有效信息
+* 3. 存储成功后获取列表信息，按规定的数据结构传入setMarkPointList方法
+* 4. 显示标记点
+
+> 删除标记点
+
+* 删除属于业务端操作，只要传入setMarkPointList方法的列表少一条，标记点显示就少一个
+* 1. 业务端删除存储的列表里的某条标记信息
+* 2. 删除成功后获取最新的列表信息，传入setMarkPointList方法
+
 ```javascript
   /**
    * @param {Array} arr 标记点数组
@@ -251,10 +263,11 @@ let options = {
     markPosition: // 必传 -- 模型构标记点位置（"2035D;-7,1,9"）/图纸标记点位置（"{"position":"-9,-2","offset":[2,2,0]}"）, 
     iconText: '标注点上的文字',
     iconImg: '标注点的图片样式',
+    color: '标注点颜色',
     photo: '图片信息',
     labelText: '文本信息',
-    selfDefiningData: '自定义存储信息'
-    clickPointCallback: '点击标记点触发函数'
+    selfDefiningData: {} // '自定义存储信息'
+    clickPointCallback: (result) => { console.log(result) } // '点击标记点触发函数'
   }
 
   // markPosition 模型如何生成
@@ -269,6 +282,14 @@ let options = {
     position: `${addDwgMark.DWGMark.x},${addDwgMark.DWGMark.y}`,
     offset: addDwgMark.offset,
   })
+
+  // clickPointCallback 回调函数result返回值说明
+  {
+    type: 'markClick',
+    left: '标记点left值',
+    top: '标记点top值',
+    data: 'selfDefiningData自定义信息'
+  }
 
 ```
 
