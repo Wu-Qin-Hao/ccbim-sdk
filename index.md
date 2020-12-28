@@ -24,6 +24,7 @@
 
 <body>
   <div id="bimView" style="position: relative;width: 100vw;height: 100vh;"></div>
+  <!--id用于区分不同的渲染，样式要传绝对定位，宽高的渲染区域-->
 </body>
 <script src="./.temp/ccbim.iife.js"></script>
 <script>
