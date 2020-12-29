@@ -93,6 +93,16 @@
 </html>
 ```
 
+# 注意事项
+
+> ccbim.iife.js中有引入两个特殊的文件(没有被打包进去，需要特殊引入和修改文件路径)：ComputeWireframe.js(worker线程计算模型线框)和gentilis_regular.typeface.josn(字体)
+
+* 这两个文件不影响加载，但是影响线框模式和测量的结果字体显示。
+
+* 目前的解决方案：将这两个文件更新到项目里，打开ccbim.iife.js搜索这两个文件名，改成正确的文件路径
+
+* 后期的解决方案：解决worker线程和字体的引入问题，都打包进ccbim.js中，无需特殊引入。提供npm安装的模式。
+
 # 配置项说明
 
 `$CCBIM$.ViewRender`用来加载模型图纸，`$CCBIM$.Panorama`用来加载全景
