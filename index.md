@@ -38,28 +38,31 @@
     operationBar: {
       showBar: true,
     },
-    selectEntityAction: [
-      {
-        name: '发起任务',
-        key: 1,
-        action: () => {console.log('发起任务')}
-      },
-      {
-        name: '添加信息',
-        key: 2,
-        action: () => {console.log('添加信息')}
-      },
-      {
-        name: '标记评论',
-        key: 3,
-        action: () => {console.log('标记评论')}
-      },
-      {
-        name: '二维码',
-        key: 4,
-        action: () => {console.log('二维码')}
-      }
-    ]
+    selectEntityAction: { // 自定义右键弹窗功能
+      visible: false, // 默认false不显示
+      list: [
+        {
+          name: '发起任务', // 显示的名称
+          key: 1, // key区分
+          action: () => { console.log('发起任务') } // 回调事件
+        },
+        {
+          name: '添加信息',
+          key: 2,
+          action: () => { console.log('添加信息') }
+        },
+        {
+          name: '标记评论',
+          key: 3,
+          action: () => { console.log('标记评论') }
+        },
+        {
+          name: '二维码',
+          key: 4,
+          action: () => { console.log('二维码') }
+        }
+      ]
+    }
   }
 
   // 传入渲染区域和配置项目，new出实例对象
@@ -102,6 +105,8 @@
 * 目前的解决方案：将这两个文件更新到项目里，打开ccbim.iife.js搜索这两个文件名，改成正确的文件路径
 
 * 后期的解决方案：解决worker线程和字体的引入问题，都打包进ccbim.js中，无需特殊引入。提供npm安装的模式。
+
+**最新的js里worker线程和字体的引入问题已解决**
 
 # 配置项说明
 
