@@ -65,10 +65,19 @@
     }
   }
 
-  // 传入渲染区域和配置项目，new出实例对象
+  // 传入渲染区域和配置项，new出实例对象
   const viewRender = new $CCBIM$.ViewRender(root, options)
+
+  // run参数，可不传(注意这里的参数会影响操作栏中的设置功能，所以没值的话最好不要传相关的字段)
+  const runOptions = {
+    bgColor: { // 背景色
+      topColor: '#fffeee',
+      bottomColor: '#fffeee',
+    },
+    wireframe: false // 线框
+  }
   // 执行run加载
-  viewRender.run()
+  viewRender.run(runOptions)
 
   // 绑定模型里的选中构件事件
   viewRender.addEventListener('selectedEntity', (data) => {
@@ -280,6 +289,7 @@ let options = {
     iconText: '标注点上的文字',
     iconImg: '标注点的图片样式',
     color: '标注点颜色',
+    opacity: '图标透明度，默认0.7', 
     photo: '图片信息',
     labelText: '文本信息',
     selfDefiningData: {} // '自定义存储信息'
