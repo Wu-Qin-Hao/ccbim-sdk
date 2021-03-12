@@ -1,5 +1,7 @@
 # 基本使用
 
+测试
+
 ## 1.采用script标签引入的方式
 
 > 引入ccbim.iife.js后window下就有`$CCBIM$`对象
