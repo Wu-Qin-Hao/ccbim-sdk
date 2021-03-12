@@ -1,7 +1,5 @@
 # 基本使用
 
-测试
-
 ## 1.采用script标签引入的方式
 
 > 引入ccbim.iife.js后window下就有`$CCBIM$`对象
@@ -37,9 +35,10 @@
     urlIp: 'https://ccbim.pinming.cn',
     versionId: 'a8c500bf-7a90-423e-f70a-9aba6d439569',
     type: 'model', // 注意加载模型用model，加载图纸用dwg
-    operationBar: {
-      showBar: true,
+    operationBar: { // 可不传，默认显示
+      showBar: true, // 是否显示操作栏
     },
+    viewBoxVisible: true, // 是否显示视口viewBox盒（可不传，默认显示）
     selectEntityAction: { // 自定义右键弹窗功能
       visible: false, // 默认false不显示
       list: [
@@ -496,6 +495,22 @@ let options = {
    * @param {Boolean} visible 显隐
    */
   viewRender.interfaceApi.setVisibleBar(domId, visible)
+```
+
+## modelToViewHome
+
+> 模型回到主视口位置
+
+```javascript
+  viewRender.interfaceApi.modelToViewHome()
+```
+
+## dwgToViewHome
+
+> 图纸回到主视口位置
+
+```javascript
+  viewRender.interfaceApi.dwgToViewHome()
 ```
 
 ## dispose
