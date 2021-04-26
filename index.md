@@ -426,9 +426,9 @@ viewRender.interfaceApi.clearAllHighlightEntity();
 ```javascript
 /**
  * 设置照相机位置（以下信息都能在selectedEntity中找到）
- * @param {Vector3} up 照相机up方向
- * @param {Vector3} target 照相机target方向
- * @param {Vector3} position 照相机位置信息
+ * @param {Array} up 照相机up方向
+ * @param {Array} target 照相机target方向
+ * @param {Array} position 照相机位置信息
  */
 viewRender.interfaceApi.setCameraModelView(up, target, position);
 ```
