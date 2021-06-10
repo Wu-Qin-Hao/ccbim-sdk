@@ -41,6 +41,7 @@
       urlIp: 'https://ccbim.pinming.cn', // 模型转换服务地址
       versionId: 'a8c500bf-7a90-423e-f70a-9aba6d439569', // 模型唯一标识符 (查看图纸使用 a8c500bf-7a7f-7e6f-2392-fcf8a04fa03c )
       type: 'model', // 注意加载模型用model，加载图纸用dwg 
+      minio: false, // 兼容部署在minio服务器，一般不传，默认false
       operationBar: {
         // 可不传，默认显示
         showBar: true, // 是否显示操作栏
