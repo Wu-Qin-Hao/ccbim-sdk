@@ -98,11 +98,11 @@
     // 执行run加载
     viewRender.run(runOptions);
 
-    // 绑定模型里的选中构件事件
+    // 绑定模型里的选中构件事件(鼠标右键)
     viewRender.addEventListener('selectedEntity', (data) => {
       console.log(data);
     });
-    // 绑定图纸里的选中位置事件
+    // 绑定图纸里的选中位置事件(鼠标右键)
     // viewRender.addEventListener('addDwgMark', (data) => {
     //   console.log(data)
     // })
@@ -494,6 +494,52 @@ viewRender.interfaceApi.canvasToImage();
 
 ```javascript
 viewRender.interfaceApi.openModelRotate();
+```
+
+## setAllEntityColorStyle
+
+> 设置所有构件的颜色
+
+```javascript
+/**
+ * @param {String} color 颜色值
+ * @param {number} opacity 透明度默认1
+ */
+viewRender.interfaceApi.setAllEntityColorStyle(color, opacity);
+```
+
+## recoverAllEntityColorStyle
+
+> 复原设置的所有构件颜色
+
+```javascript
+viewRender.interfaceApi.recoverAllEntityColorStyle();
+```
+
+## setEntityStyleFromFloorIdHandle
+
+> 设置构件颜色
+
+```javascript
+/**
+ * @param {String} floorId 楼层id
+ * @param {String} handle 构件handle
+ * @param {String} color 颜色值
+ * @param {number} opacity 透明度默认1
+ */
+viewRender.interfaceApi.setEntityStyleFromFloorIdHandle(floorId, handle, color, opacity);
+```
+
+## recoverEntityStyleFromFloorIdHandle
+
+> 复原设置构件颜色
+
+```javascript
+/**
+ * @param {String} floorId 楼层id
+ * @param {String} handle 构件handle
+ */
+viewRender.interfaceApi.recoverEntityStyleFromFloorIdHandle(floorId, handle);
 ```
 
 ## closeModelRotate
